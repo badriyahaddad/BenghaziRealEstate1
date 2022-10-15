@@ -31,38 +31,40 @@ class _ProfileState extends State<Profile> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(top: 150),
-          child: Column(children: [
-            CircleAvatar(
-              radius: 100,
-              backgroundImage: AssetImage(
-                'Assets/images/profile.jpg',
+          child: SingleChildScrollView(
+            child: Column(children: [
+              CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage(
+                  'Assets/images/profile.jpg',
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Ahmed Ali',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            Divider(
-              height: 20,
-              thickness: 2,
-              color: Color.fromARGB(255, 180, 165, 141),
-            ),
-            BuildContainer(
-              icon: Icons.phone,
-              data: '091 325 65 89',
-            ),
-            BuildContainer(
-              icon: Icons.email,
-              data: 'AhmedA@gmail.com',
-            ),
-            BuildContainer(
-              icon: Icons.home,
-              data: 'Benghazi/alhkhalij_street',
-            ),
-          ]),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Ahmed Ali',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              Divider(
+                height: 20,
+                thickness: 2,
+                color: Color.fromARGB(255, 180, 165, 141),
+              ),
+              BuildContainer(
+                icon: Icons.phone,
+                data: '091 325 65 89',
+              ),
+              BuildContainer(
+                icon: Icons.email,
+                data: 'AhmedA@gmail.com',
+              ),
+              BuildContainer(
+                icon: Icons.home,
+                data: 'Benghazi/alhkhalij_street',
+              ),
+            ]),
+          ),
         ),
       ),
     );

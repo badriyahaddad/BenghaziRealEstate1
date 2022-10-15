@@ -40,70 +40,72 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Align(
           alignment: Alignment.center,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 8.h,
-              ),
-              Text(
-                'Real Estate \n Benghazi',
-                style: GoogleFonts.lobster(
-                  fontSize: 40.sp,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 8.h,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              GridView.builder(
-                shrinkWrap: true,
-                itemCount: content.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 1,
-                  mainAxisSpacing: 1,
+                Text(
+                  'Real Estate \n Benghazi',
+                  style: GoogleFonts.lobster(
+                    fontSize: 40.sp,
+                  ),
                 ),
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 1.h, horizontal: 1.5.w),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TabbarScreen()));
-                      },
-                      child: Card(
-                        elevation: 1.h,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: Image.asset(
-                                content[index]["image"].toString(),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 1.h,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                content[index]["name"].toString(),
-                                style: TextStyle(
-                                  fontSize: 15.sp,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
+                SizedBox(
+                  height: 20,
+                ),
+                GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: content.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 1,
+                    mainAxisSpacing: 1,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 1.h, horizontal: 1.5.w),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TabbarScreen()));
+                        },
+                        child: Card(
+                          elevation: 1.h,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: Image.asset(
+                                  content[index]["image"].toString(),
                                 ),
                               ),
-                            )
-                          ],
+                              SizedBox(
+                                height: 1.h,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  content[index]["name"].toString(),
+                                  style: TextStyle(
+                                    fontSize: 15.sp,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
-              ),
-            ],
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ));
   }

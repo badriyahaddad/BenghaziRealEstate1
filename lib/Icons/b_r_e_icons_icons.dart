@@ -11,7 +11,7 @@
 ///      fonts:
 ///       - asset: fonts/BREIcons.ttf
 ///
-/// 
+///
 ///
 import 'package:flutter/widgets.dart';
 
@@ -21,6 +21,8 @@ class BREIcons {
   static const _kFontFam = 'BREIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData home_svgrepo_com = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData client_profile_svgrepo_com = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData homeSvgrepoCom =
+      IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData clientProfileSvgrepoCom =
+      IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

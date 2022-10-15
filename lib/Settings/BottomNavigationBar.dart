@@ -36,15 +36,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
         items: [
           BottomNavigationBarItem(
             label: "Home",
-            icon: Icon(
-              BREIcons.home_svgrepo_com,
+            icon:  Icon(
+              BREIcons.homeSvgrepoCom,
               size: 30,
             ),
           ),
           BottomNavigationBarItem(
             label: "Profile",
             icon: Icon(
-              BREIcons.client_profile_svgrepo_com,
+              BREIcons.clientProfileSvgrepoCom,
               size: 30,
             ),
           ),
