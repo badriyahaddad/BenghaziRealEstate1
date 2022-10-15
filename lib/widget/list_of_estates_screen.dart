@@ -1,34 +1,32 @@
-import 'dart:convert';
+import 'package:bre/Models/house_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:sizer/sizer.dart';
-import '../Models/Houses_Model.dart';
 import '../services/fetchData.dart';
-import '../services/function.dart';
-import 'package:http/http.dart' as http;
 
-class Rent extends StatefulWidget {
-  Rent({super.key});
-
+class ListOfEstatesScreen extends StatefulWidget {
+  ListOfEstatesScreen({super.key, required this.category, required this.type});
+  final String category;
+  final String type;
   @override
-  State<Rent> createState() => _RentState();
+  State<ListOfEstatesScreen> createState() => _ListOfEstatesScreenState();
 }
 
-class _RentState extends State<Rent> {
-  late var _item;
+class _ListOfEstatesScreenState extends State<ListOfEstatesScreen> {
+  // late var _item;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      body: FutureBuilder<List<Houses>>(
-          future: fetchHouses(http.Client()),
+      body: FutureBuilder<List<HouseModel>>(
+          future: fetchHouses(widget.category, widget.type),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                 shrinkWrap: true,
-                itemCount: _item.length ?? '',
+                itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -44,28 +42,31 @@ class _RentState extends State<Rent> {
                             leading:
                                 Icon(Icons.account_circle_rounded, size: 6.h),
                             title: Text(
-                              _item[index].categories[index].villa.toString(),
+                              // snapshot.data[index].location.toString(),
+                              snapshot.data![index].location.toString(),
                             ),
                             subtitle: Text(
-                              _item[index]
-                                  .categories[index]
-                                  .villa[index]
-                                  .rent[index]
-                                  .location
-                                  .toString(), 
+                              // _item[index]
+                              //     .categories[index]
+                              //     .villa[index]
+                              //     .rent[index]
+                              //     .location
+                              //     .toString(),
+                              snapshot.data![index].location.toString(),
                             ),
                           ),
                           Padding(
                               padding: EdgeInsets.symmetric(
                                 horizontal: 2.h,
                               ),
-                              child: Image.network(
-                                _item[index]
-                                    .categories[index]
-                                    .villa[index]
-                                    .rent[index]
-                                    .image
-                                    .toString(),
+                              child: Image.asset(
+                                // _item[index]
+                                //     .categories[index]
+                                //     .villa[index]
+                                //     .rent[index]
+                                //     .image
+                                //     .toString(),
+                                snapshot.data![index].image.toString(),
                               )),
                           Padding(
                             padding: EdgeInsets.symmetric(
@@ -85,12 +86,13 @@ class _RentState extends State<Rent> {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      _item[index]
-                                          .categories[index]
-                                          .villa[index]
-                                          .rent[index]
-                                          .price
-                                          .toString(),
+                                      // _item[index]
+                                      //     .categories[index]
+                                      //     .villa[index]
+                                      //     .rent[index]
+                                      //     .price
+                                      //     .toString(),
+                                      snapshot.data![index].price.toString(),
                                       style: TextStyle(
                                           color: Color.fromARGB(255, 0, 0, 0)),
                                     ),
@@ -102,15 +104,18 @@ class _RentState extends State<Rent> {
                           TextButton(
                               onPressed: () {},
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 15.h),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 25),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.add_home_work),
+                                    const Icon(Icons.add_home_work),
                                     SizedBox(
                                       width: 10,
                                     ),
                                     Text(
-                                      'Rent Now',
+                                      widget.type == 'sell'
+                                          ? 'Buy Now'
+                                          : 'Rent Now',
                                       style: TextStyle(fontSize: 20),
                                     ),
                                   ],

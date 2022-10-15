@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:core';
-import 'package:bre/Models/Houses_Model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -17,10 +16,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 List content = [
-  {"image": "Assets/images/apartment.png", "name": "Apartment"},
-  {"image": "Assets/images/villa.png", "name": "Villas"},
-  {"image": "Assets/images/ofice.png", "name": "Offices"},
-  {"image": "Assets/images/shop.png", "name": "Shops"},
+  {"image": "Assets/images/apartment.png", "name": "apartment"},
+  {"image": "Assets/images/villa.png", "name": "villa"},
+  {"image": "Assets/images/ofice.png", "name": "office"},
+  {"image": "Assets/images/shop.png", "name": "market"},
 ];
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -52,13 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 40.sp,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 GridView.builder(
                   shrinkWrap: true,
                   itemCount: content.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 1,
                     mainAxisSpacing: 1,
@@ -69,10 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           vertical: 1.h, horizontal: 1.5.w),
                       child: InkWell(
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => TabbarScreen()));
+                                  builder: (context) => TabbarScreen(
+                                        category: content[index]['name'],
+                                      )));
                         },
                         child: Card(
                           elevation: 1.h,
