@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -24,6 +25,6 @@ Future<List<HouseModel>> fetchHouses(
   var jsonText = await rootBundle.loadString('json/houses.json');
 
   var data = json.decode(jsonText)[category][type];
-  print(category + ' ' + type);
+
   return (data).map<HouseModel>((json) => HouseModel.fromJson(json)).toList();
 }

@@ -1,6 +1,5 @@
 import 'package:bre/services/fetchData.dart';
 import 'package:bre/widget/list_of_estates_screen.dart';
-import 'package:bre/widget/selling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
